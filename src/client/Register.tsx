@@ -8,6 +8,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Login } from "./Login";
 
+import { auth } from "./config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/register";
@@ -62,6 +65,18 @@ export const Register = (props) => {
     setSuccess(true);
   };
 
+  const signup = async () => {
+    await createUserWithEmailAndPassword(auth, user, pwd)
+    .then ((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+  };
+
   return (
     <>
       {success ? (
@@ -79,7 +94,7 @@ export const Register = (props) => {
             {errMsg}
           </p>
           <h2>Register</h2>
-          <form className="register-form" onSubmit={handleSubmit}>
+          <form className="register-form" onSubmit={signup} onClick={signup}>
             <label htmlFor="name">Full name: </label>
             <input
               value={name}
