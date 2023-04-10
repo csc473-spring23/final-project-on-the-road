@@ -66,7 +66,7 @@ export const Register = (props) => {
   };
 
   const signup = async () => {
-    await createUserWithEmailAndPassword(auth, user, pwd)
+    await createUserWithEmailAndPassword(auth, email, pwd)
     .then ((userCredential) => {
       const user = userCredential.user;
       console.log(user);
