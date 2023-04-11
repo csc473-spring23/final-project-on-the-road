@@ -1,4 +1,4 @@
-.App {
+.page {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -92,3 +92,6 @@ button {
 .line {
   display: inline-block;
 }
+
+
+
