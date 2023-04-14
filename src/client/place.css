@@ -25,10 +25,9 @@
   }
   
   .place > button {
-    background: #f0c14b;
+    background: rgba(0, 149, 218, 0.85);
     border: 1px solid;
     margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
     color: #111;
   }
   

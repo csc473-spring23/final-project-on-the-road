@@ -6,7 +6,7 @@ import LoginPage from "./loginpage";
 import Home from "./home";
 import { Routes ,Route } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
-
+import FavList from "./FavList";
 
 function App() {
   // const [currentForm, setCurrentForm] = useState("login");
@@ -16,13 +16,11 @@ function App() {
   // };
 
   return (
-    <>
-
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/register" element={<LoginPage/>}/>
-      </Routes>
-    </>
+    <div className="App">
+      {
+        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+      }
+    </div>
   );
 }
 
