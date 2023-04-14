@@ -16,11 +16,14 @@ function App() {
   // };
 
   return (
-    <div className="App">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-      }
-    </div>
+    <>
+
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/register" element={<LoginPage/>}/>
+        <Route path="/favlist" element={<FavList/>}/>
+      </Routes>
+    </>
   );
 }
 
