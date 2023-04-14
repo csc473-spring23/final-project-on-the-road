@@ -1,9 +1,22 @@
 import React from "react";
 import "./place.css"
+import { useStateValue } from "./StateProvider";
 
 
-function Place({title, price, rating }) {
- 
+function Place({id,title, price, rating }) {
+  const [{basket},dispatch]=useStateValue();
+  const addToBasket=()=>{
+    //Add item to basket
+    dispatch({
+      type:"ADD_TO_BASKET",
+      item:{
+        id:id,
+        title:title,
+        price:price,
+        rating:rating
+      }})
+  };
+
   return (
     <div className="place">
       <div className="place__info">
@@ -18,7 +31,7 @@ function Place({title, price, rating }) {
         </div>
       </div>
 
-      <button>Add to Favorite List</button>
+      <button onClick={addToBasket}>Add to Favorite List</button>
     </div>
   );
 }
