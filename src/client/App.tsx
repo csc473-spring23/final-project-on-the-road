@@ -7,6 +7,7 @@ import SearchResults from "./Search Results Page/SearchResults";
 import Home from "./Home Page/Home";
 import { Routes, Route } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
+import FavList from "./FavList";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/search-results" element={<SearchResults />}></Route>
         <Route path="/register" element={<LoginPage />} />
+        <Route path="/favlist" element={<FavList/>}/>
       </Routes>
     </>
   );
