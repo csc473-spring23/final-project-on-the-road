@@ -1,5 +1,5 @@
 export const initialState = {
-  basket: [{ id:"12321341", title: "Empire State Building", price: 64, rating: 4.7 }],
+  basket: [{ id:"12321341", title: "Empire State Building", price: 64, rating: 4.6 }],
   user: null,
 };
 
