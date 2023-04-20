@@ -2,11 +2,12 @@ import SearchBar from "../Components/SearchBar";
 import React from "react";
 import { BsCardChecklist } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-
+import { test } from "../config/firestore";
 function Home() {
   const navigate = useNavigate();
   const handleClick1 = () => navigate("/register");
   const handleClick2 = () => navigate("/");
+  
   return (
     <div>
       <div className="header">
@@ -27,6 +28,8 @@ function Home() {
         </div>
       </div>
       <SearchBar />
+      <h1>Hello</h1>
+      <button onClick={test}>test</button>
     </div>
   );
 }
