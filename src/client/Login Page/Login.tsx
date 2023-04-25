@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-
+import { login, logout } from "../config/firebase";
 export const Login = (props) => {
   const [username, setUser] = useState("");
   const [pass, setPass] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log("login");
+    login(username, pass);
+  };
+  
+  const handlesignout = (e) => {
+    e.preventDefault();
+    logout();
   };
 
   return (
@@ -34,6 +41,9 @@ export const Login = (props) => {
         <button type="submit">Log In</button>
       </form>
 
+      <button onClick={handlesignout}>
+        signout
+      </button>
       <button
         className="link-btn"
         onClick={() => props.onFormSwitch("register")}

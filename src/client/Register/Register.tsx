@@ -52,7 +52,7 @@ export const Register = (props) => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e : Event) => {
     e.preventDefault();
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
@@ -64,7 +64,11 @@ export const Register = (props) => {
   };
 
   // TODO Add Signup back
-  const register = signup(name,email, pwd);
+  const register = (e : Event) => {
+    e.preventDefault();
+    signup(name,email, pwd);
+  }
+  
   return (
     <>
       {success ? (
@@ -82,7 +86,7 @@ export const Register = (props) => {
             {errMsg}
           </p>
           <h2>Register</h2>
-          <form className="register-form" onSubmit={register} onClick={register}>
+          <form className="register-form" onSubmit={register}>
             <label htmlFor="name">Full name: </label>
             <input
               value={name}
