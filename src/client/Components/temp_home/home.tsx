@@ -1,8 +1,8 @@
 import React from "react";
 import "./Home.css";
-import NavBar from "./nav/NavBar";
-import Place from "./place";
-import SearchBar from "./Components/Search Results Page/SearchBar";
+import NavBar from "../../nav/NavBar";
+import Place from "../../place";
+import SearchBar from "../Search Results Page/SearchBar";
 import { useSearchParams } from "react-router-dom";
 
 function Home() {

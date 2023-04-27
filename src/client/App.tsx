@@ -2,10 +2,9 @@
 // import "./App.css";
 // import { Login } from "./Login";
 // import { Register } from "./Register";
-import LoginPage from "./Login Page/LoginPage";
-import SearchResults from "./Search Results Page/SearchResults";
-import Home from "./Home Page/Home";
-import { Routes, Route } from "react-router-dom";
+import LoginPage from "./Components/Login Page/LoginPage";
+import Home from "./Components/temp_home/home";
+import { Routes ,Route } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import FavList from "./Components/FavList/FavList";
 import SearchResults from "./Components/Search Results Page/SearchResults";
