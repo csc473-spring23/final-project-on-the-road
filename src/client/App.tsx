@@ -3,7 +3,7 @@
 // import { Login } from "./Login";
 // import { Register } from "./Register";
 import LoginPage from "./loginpage";
-import Home from "./home";
+import Home from "./Components/temp_home/home";
 import { Routes ,Route } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import FavList from "./Components/FavList/FavList";
