@@ -11,7 +11,6 @@ function SearchResults() {
 
   getNearbyTouristAttractions(query).then((result) => {
     searchResults = result;
-    console.log(searchResults);
     result.results.forEach((place) => {
       console.log(`${place.name}`);
     });
@@ -19,7 +18,7 @@ function SearchResults() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar hasSearchBar={true} />
       <h2> {query} </h2>
     </div>
   );

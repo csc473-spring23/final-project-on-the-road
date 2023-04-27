@@ -1,6 +1,8 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "../search bar/SearchBar.css";
+import { BsSearch } from "react-icons/bs";
 
 function SearchBar() {
   const [query, setQuery] = useState("");
@@ -19,14 +21,21 @@ function SearchBar() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        id="street"
-        placeholder={"eg 123 Main Street"}
-        value={query}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
+      <div className="search-bar">
+        <div className="search-input">
+          <input
+            type="text"
+            id="input"
+            placeholder={"e.g. Restuarants Near Manhattan"}
+            value={query}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit">
+          <BsSearch className="search-icon" size={25} />
+        </button>
+      </div>
     </form>
   );
 }

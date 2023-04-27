@@ -1,31 +1,38 @@
 import React from "react";
 import { BsCardChecklist } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "../SearchBar";
+import SearchBar from "../search bar/SearchBar";
 import "../nav/NavBar.css";
 
-function NavBar() {
+function NavBar(props) {
+  const { hasSearchBar } = props;
   const navigate = useNavigate();
-  const handleClick1 = () => navigate("/register");
-  const handleClick2 = () => navigate("/");
+  const handleClickHome = () => navigate("/");
+  const handleClickLogin = () => navigate("/login");
+  const handleClickSignup = () => navigate("/register");
 
   return (
     <div className="header">
-      <div className="header__logo" onClick={handleClick2}>
-        <span>On the Road</span>
+      <img
+        id="logo"
+        src="icons/logo.png"
+        alt="Logo"
+        onClick={handleClickHome}
+      ></img>
+
+      <div className="header-website-name">
+        <p>SightSeeker</p>
       </div>
 
-      <SearchBar />
+      {hasSearchBar ? <SearchBar /> : null}
 
-      <div className="header__right">
-        <div className="header__register" onClick={handleClick1}>
-          <span className="header__optionLineOne">Hello Guest</span>
-          <span className="header__optionLineTwo">Sign In</span>
+      <div className="header-options">
+        <div className="header-login" onClick={handleClickLogin}>
+          <p>Log In</p>
         </div>
 
-        <div className="header__optionBasket">
-          <BsCardChecklist></BsCardChecklist>
-          <span className="header__optionLineTwo header__basketCount">0</span>
+        <div className="header-signin" onClick={handleClickSignup}>
+          <p>Sign In</p>
         </div>
       </div>
     </div>
