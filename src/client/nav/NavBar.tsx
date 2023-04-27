@@ -4,6 +4,7 @@ import { BsCardChecklist } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import "./NavBar.css";
 import { useStateValue } from "../StateProvider";
+import SearchBar from "../Components/Search Results Page/SearchBar";
 
 function NavBar(){
     const [ {basket}]=useStateValue();
@@ -12,13 +13,14 @@ function NavBar(){
     const handleClick2=()=> navigate('/'); 
     const handleClick3=()=>navigate('/favlist');
 
-    console.log(basket);
+    
     return (
         <div className="header">
                 <div className="header__logo" onClick={handleClick2}>
                 <span>On the Road</span>
                 </div>
-
+                
+                <SearchBar/>
                 {/* <div className="header__search">
                 <input className="header__searchInput" type="text" />
                 <AiOutlineSearch className="header__searchIcon"></AiOutlineSearch>

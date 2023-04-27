@@ -3,7 +3,7 @@ import "./place.css"
 import { useStateValue } from "./StateProvider";
 
 
-function Place({id,title, price, rating }) {
+function Place({id,title, addr, rating} ) {
   const [{basket},dispatch]=useStateValue();
   const addToBasket=()=>{
     //Add item to basket
@@ -12,26 +12,30 @@ function Place({id,title, price, rating }) {
       item:{
         id:id,
         title:title,
-        price:price,
+        addr:addr,
         rating:rating
       }})
   };
 
+
   return (
     <div className="place">
       <div className="place__info">
-        <p>{title}</p>
-        <p className="place__price">
+        <p><strong>{title}</strong></p>
+        <p className="place__address">
+          <strong>Address:</strong> {addr}
+        </p>
+        {/* <p className="place__price">
           <small>$</small>
           <strong>{price}</strong>
-        </p>
+        </p> */}
         <div className="product__rating">
-          <p>rating: {rating}</p>
+          <p><strong>Rating:</strong> {rating}</p>
         {/* { Array(rating).fill('⭐').map((_, i) => ( '⭐' )) } */}
         </div>
-      </div>
-
-      <button onClick={addToBasket}>Add to Favorite List</button>
+        </div>
+        
+        <button onClick={addToBasket}>Add to Favorite List</button>
     </div>
   );
 }
