@@ -10,18 +10,6 @@ import {
 import { db } from "./firebase";
 import { faV } from "@fortawesome/free-solid-svg-icons";
 
-// collection ref
-// const usersCol = collection(db, "users");
-
-// export function test() {
-//   getDocs(usersCol).then((querySnapshot) => {
-//     console.log(querySnapshot.size)
-//     querySnapshot.forEach((doc) => {
-//       // doc.data() is never undefined for query doc snapshots
-//       console.log(doc.id, " => ", doc.data());
-//     });
-//   });
-// }
 
 /* Adding UUID to user as Document
 * Add the has password to the user
@@ -77,6 +65,8 @@ export async function addFavorite(uuid:string, location: string, name: string) {
 }
 
 // Delete from Favorite
+
+// Require Update to delete by key
 export async function deleteFavorite(uuid:string, key: number) {
   const q = doc(db,"users", uuid);
   const  usr_data = await getDoc(q);

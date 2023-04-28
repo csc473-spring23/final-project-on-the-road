@@ -10,7 +10,7 @@ function Home() {
   const handleClick1 = () => navigate("/register");
   const handleClick2 = () => navigate("/");
   
-
+// TODO REMOVE TESTING FUNCTIONS
   function log(e){
     e.preventDefault();
     login("test@gmail.com", "Abcd1234!");
@@ -44,7 +44,7 @@ function Home() {
     e.preventDefault();
     console.log("Deleting Favorite");
     if (curr_usr)
-      deleteFavorite(curr_usr.uid, 4);
+      deleteFavorite(curr_usr.uid, 23);
     else
       console.log("No user");
   }

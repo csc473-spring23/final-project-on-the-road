@@ -10,10 +10,6 @@ export const Login = (props) => {
     login(username, pass);
   };
   
-  const handlesignout = (e) => {
-    e.preventDefault();
-    logout();
-  };
 
   return (
     <div className="auth-form-container">
@@ -41,9 +37,6 @@ export const Login = (props) => {
         <button type="submit">Log In</button>
       </form>
 
-      <button onClick={handlesignout}>
-        signout
-      </button>
       <button
         className="link-btn"
         onClick={() => props.onFormSwitch("register")}

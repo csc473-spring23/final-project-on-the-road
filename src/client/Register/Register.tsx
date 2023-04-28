@@ -64,7 +64,7 @@ export const Register = (props) => {
   };
 
   // TODO Add Signup back
-  const register = (e : Event) => {
+  const register = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     signup(name,email, pwd);
   }
