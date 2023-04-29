@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Login } from "../../Login Page/Login";
-
+import { signup } from "../../config/firebase";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -65,16 +65,8 @@ export const Register = (props) => {
     setSuccess(true);
   };
 
-  const signup = async () => {
-    await createUserWithEmailAndPassword(auth, email, pwd)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+  const register = async () => {
+    signup(name, email, pwd)
   };
 
   return (
@@ -94,7 +86,7 @@ export const Register = (props) => {
             {errMsg}
           </p>
           <h2>Register</h2>
-          <form className="register-form" onSubmit={signup} onClick={signup}>
+          <form className="register-form" onSubmit={register} onClick={register}>
             <label htmlFor="name">Full name: </label>
             <input
               value={name}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { login } from "./config/firebase";
 
 export const Login = (props) => {
   const [username, setUser] = useState("");
@@ -7,6 +7,7 @@ export const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    login(username,pass);
  
   };
 
