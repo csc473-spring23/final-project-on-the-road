@@ -9,7 +9,7 @@ import { curr_usr, login, logout } from "../../config/firebase";
 
 function FavList() {
   // const [{basket}]=useStateValue();
-  login("test@gmail.com", "Abcd1234!");
+  // login("test@gmail.com", "Abcd1234!");
   if (curr_usr){
     getFavorites(curr_usr.uid);
     }

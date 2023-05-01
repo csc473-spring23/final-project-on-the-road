@@ -27,6 +27,19 @@ import { Console } from "console";
     })
   }
   
+  //the number of places on the favorite list
+  export async function favNumber(uuid:string){
+    const q = doc(db,"users", uuid);
+    const  usr_data = await getDoc(q);
+    if (usr_data.exists()) {
+      const fav_list = usr_data.data().favorites
+      if(fav_list){
+        return Number(Object.keys(fav_list).length);
+      }
+    } else {
+      return 0;
+    }
+  }
   // Get Favorite list by user
   export async function getFavorites(uuid:string) {
     console.log("Calling Favorite");
@@ -63,9 +76,18 @@ import { Console } from "console";
           buttonA.addEventListener("click",()=>{
             console.log("clicked");
             if (curr_usr){
-              console.log(Number(key));
-              deleteFavorite(curr_usr.uid,Number(key));
+              
+              deleteFavorite(curr_usr.uid,Number(key)).
+              then(()=>
+                favNumber(curr_usr.uid)).
+                then((num)=>{
+                  const basketLenElement=document.getElementById("basketLength");
+                  basketLenElement.innerHTML=num.toString();});
               document.getElementById(key)?.remove();
+              
+                
+                
+              
             }
             });
           
@@ -93,7 +115,7 @@ import { Console } from "console";
           
         }
       }
-      return fav_list.length
+      
     } else {
       console.log("No such document!");
     }
@@ -104,6 +126,7 @@ import { Console } from "console";
     const q = doc(db,"users", uuid);
     const  usr_data = await getDoc(q);
     
+
     console.log("Add Favorite?");
     if (usr_data.exists()) {
       const fav_list = usr_data.data().favorites
