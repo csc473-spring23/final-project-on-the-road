@@ -6,8 +6,8 @@ import { getNearbyTouristAttractions } from "./TouristAttractions";
 import "./Search.css";
 import filterObjects from "./filter";
 import filterOnR from "./filterR";
-
-
+import { getFavorites, addFavorite,deleteFavorite } from "../../config/firestore"
+import {curr_usr} from "../../config/firebase";
 
 const iconArray=['school',"restaurant","bar","shopping","park","stadium",'museum'];
 
@@ -93,10 +93,17 @@ function SearchResults() {
       ()=>{
         if (buttonA.style.backgroundColor=="white"){
           buttonA.style.backgroundColor="lightblue";
-          buttonA.innerText="Remove from Favorite List";}
+          // buttonA.innerText="Remove from Favorite List";
+          if (curr_usr)
+            addFavorite(curr_usr.uid,placeA,placeN);
+          else {
+            console.log("No user");
+    }
+          }
         else{
           buttonA.style.backgroundColor="white";
-          buttonA.innerText="Add to Favorite List";}
+          // buttonA.innerText="Add to Favorite List";
+          }
         });
       placeInfo.append(buttonA);
       x.appendChild(placeInfo);

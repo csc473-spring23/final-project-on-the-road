@@ -1,17 +1,49 @@
 import React from "react";
-import { useStateValue } from "../../StateProvider";
+// import { useStateValue } from "./StateProvider";
 import NavBar from "../../nav/NavBar";
-import CheckoutProduct from "./CheckOut";
-import filterObjects from "../Search Results Page/filter";
+// import CheckoutProduct from "./CheckOut";
+// import filterObjects from "../Search Results Page/filter";
 import "./FavList.css";
+import { getFavorites, addFavorite,deleteFavorite } from "../../config/firestore";
+import { curr_usr, login, logout } from "../../config/firebase";
 
 function FavList() {
-  const [{basket}]=useStateValue();
+  // const [{basket}]=useStateValue();
+  login("test@gmail.com", "Abcd1234!");
+  if (curr_usr){
+    getFavorites(curr_usr.uid);
+    }
+  
+  // const btns=document.querySelectorAll("#delButton");
+  // btns.forEach(btn=>{
+  //   btn.addEventListener("click",()=>{
+      
+  //     const td=btn.parentElement;
+  //     const place_id=td.parentElement.id;
+  //     document.getElementById(place_id)?.remove();
+  //     deleteFavorite(curr_usr.uid,Number(place_id));
+      
+  //   });
+  // })
+  
   return (
-    <div>
+    <div className="display_Fav_Page">
        <NavBar/>
        
-  <div className="checkout">
+       <div className="favlist_display" id="favlist_display">
+
+       </div>
+       <table className="table table-hover table-dark" id="favlist_display">
+        <thead>
+          <tr className="bg-primary">
+            <th scope="col">Location Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+        </table>
+  {/* <div className="checkout">
     {basket?.length===0?(
       <div>
         <h2>Your favoriate list is empty.</h2>
@@ -42,7 +74,7 @@ function FavList() {
         />
       ))}
     </div>)}
-  </div>
+  </div> */}
   </div>)
 }
 

@@ -4,9 +4,13 @@ import NavBar from "../../nav/NavBar";
 import Place from "../../place";
 import SearchBar from "../Search Results Page/SearchBar";
 import { useSearchParams } from "react-router-dom";
+import { getFavorites, addFavorite,deleteFavorite } from "../../config/firestore"
+import { curr_usr, login, logout } from "../../config/firebase";
 
 function Home() {
-  
+  if (curr_usr){
+    console.log(curr_usr.uid);
+  }
   return (
     <div>
       <NavBar/>

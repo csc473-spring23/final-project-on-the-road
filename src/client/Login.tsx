@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { login } from "./config/firebase";
-
+import { useNavigate } from "react-router-dom";
 export const Login = (props) => {
   const [username, setUser] = useState("");
   const [pass, setPass] = useState("");
 
+  const navigate = useNavigate();
+  const handleClick2=()=> {
+    navigate('/');
+    console.log();};
+
   const handleSubmit = (e) => {
     e.preventDefault();
     login(username,pass);
- 
   };
 
   return (
     <div className="auth-form-container">
       <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form">
         <label htmlFor="username">Username:</label>
         <input
           value={username}
@@ -34,7 +38,8 @@ export const Login = (props) => {
           name="password"
         />
 
-        <button type="submit">Log In</button>
+        <button type="submit" onMouseEnter={handleSubmit} onClick={
+          handleClick2}>Log In</button>
       </form>
 
       <button

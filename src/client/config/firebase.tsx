@@ -27,6 +27,7 @@ const firebaseConfig = {
   measurementId: "G-6GEPBSFHME"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
@@ -54,14 +55,14 @@ export function signup(username:string, email: string, password: string) {
 
 // LOGIN USER
 export function login(email: string, password: string) {
+  
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       // update Profile with username
       const user = userCredential.user;
       console.log("login() User signed in", userCredential.user);
-    })
-    .catch((error) => {
+    }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
