@@ -9,8 +9,9 @@ import { curr_usr, login, logout } from "../../config/firebase";
 
 function Home() {
   if (curr_usr){
-    console.log(curr_usr.uid);
+    console.log(curr_usr.uid); 
   }
+
   return (
     <div>
       <NavBar/>

@@ -133,7 +133,7 @@ import { Console } from "console";
       if(fav_list){
         console.log("Length of fav_list", Object.keys(fav_list).length);
         const max_key = Object.keys(fav_list).reduce((a, b) => a > b ? a : b);
-        fav_list[Number(max_key)+1] = {
+       fav_list[Number(max_key)+1] = {
           location: location,
           name: name
         };

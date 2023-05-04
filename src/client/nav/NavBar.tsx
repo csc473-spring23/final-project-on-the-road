@@ -22,6 +22,8 @@ function NavBar(){
           txt1.textContent="Hello Guest";
           const txt2=document.getElementById("txt2");
           txt2.textContent="Sign In";
+          const txt3=document.getElementById("basketLength");
+          txt3.textContent="0";
         }
         else{
             handleClick1();
