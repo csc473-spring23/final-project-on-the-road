@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { login } from "./config/firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Navigate } from "react-router-dom";
+import { curr_usr } from "./config/firebase";
+
 export const Login = (props) => {
   const [username, setUser] = useState("");
   const [pass, setPass] = useState("");
 
   const navigate = useNavigate();
-  const handleClick2=()=> {
-    navigate('/');
-    console.log();};
-
-  const handleSubmit = (e) => {
+  const handleClick2= async (e) => {
     e.preventDefault();
     login(username,pass);
+
+    if (curr_usr){
+      navigate("/");
+    }
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   login(username,pass);
+  // };
 
   return (
     <div className="auth-form-container">
@@ -37,9 +44,8 @@ export const Login = (props) => {
           id="password"
           name="password"
         />
-
-        <button type="submit" onMouseEnter={handleSubmit} onClick={
-          handleClick2}>Log In</button>
+        {/* onMouseEnter={handleSubmit} */}
+        <button type="submit"  onClick={handleClick2}>Log In</button>
       </form>
 
       <button

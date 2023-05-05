@@ -12,11 +12,13 @@ import {
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs, doc, deleteDoc, addDoc} from "firebase/firestore"
 import { addUser } from "./firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
   apiKey: "AIzaSyAaiAuxOludtjvuJ2L0G2CqMzKSP7OHN6A",
   authDomain: "onetheroad-c4afe.firebaseapp.com",
@@ -37,6 +39,7 @@ export let curr_usr = auth.currentUser;
 
 // SIGNUP USER & LOG THEM IN
 export function signup(username:string, email: string, password: string) {
+
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Add username to Database
@@ -62,6 +65,7 @@ export function login(email: string, password: string) {
       // update Profile with username
       const user = userCredential.user;
       console.log("login() User signed in", userCredential.user);
+
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -80,12 +84,13 @@ export function logout() {
 }
 
 onAuthStateChanged(auth, (user) => {
+
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     curr_usr = auth.currentUser;
     console.log("AuthState()", curr_usr);
-    
+
   } else {
     // User is signed out
     curr_usr = auth.currentUser;
