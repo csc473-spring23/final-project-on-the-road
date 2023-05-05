@@ -17,13 +17,16 @@ function NavBar(){
     const handleClick3=()=>navigate('/favlist');
     const handleAuthenticaton = () => {
         if (curr_usr) {
-          auth.signOut();
-          const txt1=document.getElementById("txt1");
-          txt1.textContent="Hello Guest";
-          const txt2=document.getElementById("txt2");
-          txt2.textContent="Sign In";
-          const txt3=document.getElementById("basketLength");
-          txt3.textContent="0";
+          auth.signOut().then(()=>{
+            const txt1=document.getElementById("txt1");
+            txt1.textContent="Hello Guest";
+            const txt2=document.getElementById("txt2");
+            txt2.textContent="Sign In";
+            const txt3=document.getElementById("basketLength");
+            txt3.textContent="0";
+            navigate('/');
+          });
+          
         }
         else{
             handleClick1();
