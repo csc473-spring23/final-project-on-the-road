@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import SimpleImageSlider from "react-simple-image-slider";
 import NavBar from "../Components/nav/NavBar";
 import Footer from "../Components/footer/Footer";
-import "../Home Page/Home.css";
+import "../Home Page LI/Home LI.css";
+import { curr_usr } from "../config/firebase";
 
 const touristAttractionImages = [
   { url: "images/1.jpg" },
@@ -15,11 +16,16 @@ const touristAttractionImages = [
   { url: "images/5.jpg" },
 ];
 
-function Home() {
+function HomeLI() {
+  const currentUser = curr_usr;
+  const displayName = currentUser?.displayName;
+  console.log(displayName);
+  console.log("Hi");
+
   return (
     <div className="home">
       <div className="home-header">
-        <NavBar hasSearchBar={false} hasColor={false} isLoggedIn={false} />
+        <NavBar hasSearchBar={false} hasColor={false} isLoggedIn={true} />
       </div>
       <div className="home-slider">
         <SimpleImageSlider
@@ -41,33 +47,10 @@ function Home() {
         <SearchBar />
       </div>
 
-      <div className="home-info">
-        <div id="home-info-info1">
-          <img
-            id="home-info-info1-icon"
-            src="icons/discover.png"
-            alt="Discover"
-          ></img>
-          <p>Discover new sights and adventures</p>
-        </div>
-
-        <div id="home-info-info2">
-          <img
-            id="home-info-info2-icon"
-            src="icons/question.png"
-            alt="Question"
-          ></img>
-          <p>Ask any questions about an attraction</p>
-        </div>
-
-        <div id="home-info-info3">
-          <img id="home-info-info3-icon" src="icons/news.png" alt="News"></img>
-          <p>Find the latest news on an attraction</p>
-        </div>
-      </div>
+      <div className="home-info"></div>
       <Footer />
     </div>
   );
 }
 
-export default Home;
+export default HomeLI;

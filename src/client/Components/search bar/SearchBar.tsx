@@ -32,9 +32,11 @@ function SearchBar() {
           />
         </div>
 
-        <button type="submit">
-          <BsSearch className="search-icon" size={25} />
-        </button>
+        <div className="search-bar-button">
+          <button type="submit">
+            <BsSearch className="search-icon" size={25} />
+          </button>
+        </div>
       </div>
     </form>
   );

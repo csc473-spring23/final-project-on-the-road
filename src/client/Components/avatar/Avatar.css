@@ -1,0 +1,29 @@
+.avatar{
+    position:relative;
+    width: 75px;
+}
+
+.avatar-menu{
+    position: absolute;
+    top:0;
+    left: -110px;
+    width: 110px;
+    border: 1px solid black;
+}
+
+.avatar-menu > p{
+    margin: 5px;
+}
+
+.avatar .avatar-menu{
+    display: none;
+}
+
+.avatar:hover .avatar-menu{
+    display: block;
+}
+
+#avatar-menu-favList{
+    cursor: pointer;
+}
+

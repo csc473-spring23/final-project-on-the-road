@@ -1,0 +1,21 @@
+.filter_box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  margin-bottom: 5px;
+  gap:5px;
+}
+
+.filter_box>button{
+  display:"normal";
+}
+
+.table{
+table-layout: auto;
+width: 100%;
+border: 1px solid black;
+}
+td,tr{
+border: 1px solid black;
+}
