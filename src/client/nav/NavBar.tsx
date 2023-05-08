@@ -12,7 +12,7 @@ import { documentId } from "firebase/firestore";
 function NavBar(){
     
     const navigate = useNavigate();
-    const handleClick1 = () => navigate('/register');
+    const handleClick1 = () => navigate('/login');
     const handleClick2=()=> navigate('/'); 
     const handleClick3=()=>navigate('/favlist');
     const handleAuthenticaton = () => {

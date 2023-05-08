@@ -8,6 +8,7 @@ import { Routes ,Route } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 import FavList from "./Components/FavList/FavList";
 import SearchResults from "./Components/Search Results Page/SearchResults";
+import RegisterPage from "./RegisterPage";
 
 function App() {
   // const [currentForm, setCurrentForm] = useState("login");
@@ -21,9 +22,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/register" element={<LoginPage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
         <Route path="/favlist" element={<FavList/>}/>
         <Route path="/search-results" element={<SearchResults />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
       </Routes>
     </>
   );

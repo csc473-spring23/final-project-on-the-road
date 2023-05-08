@@ -7,7 +7,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Login } from "./Login";
-
 import { auth } from "./config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -78,7 +77,7 @@ export const Register = (props) => {
   };
 
   return (
-    <>
+    <div className="RegisterPage">
       {success ? (
         <section>
           <h2>Success!</h2>
@@ -240,6 +239,6 @@ export const Register = (props) => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
