@@ -6,6 +6,8 @@ import NavBar from "../../nav/NavBar";
 import "./FavList.css";
 import { getFavorites, addFavorite,deleteFavorite } from "../../config/firestore";
 import { curr_usr, login, logout } from "../../config/firebase";
+import Footer from "../Footer/Footer";
+
 
 function FavList() {
   // const [{basket}]=useStateValue();
@@ -27,22 +29,22 @@ function FavList() {
   // })
   
   return (
-    <div className="display_Fav_Page">
+    <div>
        <NavBar/>
-       
        <div className="favlist_display" id="favlist_display">
-
+        <h2>Your Favoriate List</h2>
+        <table className="table table-hover table-dark" id="favlist_display">
+          <thead>
+            <tr className="bg-primary">
+              <th scope="col">Location Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+          </table>
        </div>
-       <table className="table table-hover table-dark" id="favlist_display">
-        <thead>
-          <tr className="bg-primary">
-            <th scope="col">Location Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-        </table>
+       
   {/* <div className="checkout">
     {basket?.length===0?(
       <div>
@@ -75,6 +77,7 @@ function FavList() {
       ))}
     </div>)}
   </div> */}
+    <Footer/>
   </div>)
 }
 

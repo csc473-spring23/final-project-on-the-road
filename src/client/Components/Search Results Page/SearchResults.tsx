@@ -8,7 +8,7 @@ import filterObjects from "./filter";
 import filterOnR from "./filterR";
 import { favNumber,getFavorites, addFavorite,deleteFavorite } from "../../config/firestore"
 import {curr_usr} from "../../config/firebase";
-
+import Footer from "../Footer/Footer";
 const iconArray=['school',"restaurant","bar","shopping","park","stadium",'museum'];
 
 
@@ -122,8 +122,9 @@ function SearchResults() {
   }).then(()=>myslider()).then(()=>{filterOnR();console.log("finished")});
   
   return (
-    <div className="home">
-      <NavBar />
+    <div>
+      <NavBar/>
+      <div className="home">
       <h2>What you have entered: {query}</h2>
       <div className="main">
         <div className="filter">
@@ -155,6 +156,9 @@ function SearchResults() {
         </div>
         {/* {places.map((placei)=>(<Place id={placei.id} title={placei.title} addr={placei.addr} rating={placei.rating}/>))} */}
     </div>
+      <Footer/>
+    </div>
+    
   );
 }
 

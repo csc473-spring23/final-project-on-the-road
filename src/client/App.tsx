@@ -9,7 +9,7 @@ import { Outlet, Link } from "react-router-dom";
 import FavList from "./Components/FavList/FavList";
 import SearchResults from "./Components/Search Results Page/SearchResults";
 import RegisterPage from "./RegisterPage";
-
+import AboutPage from "./Components/About/About";
 function App() {
   // const [currentForm, setCurrentForm] = useState("login");
 
@@ -26,6 +26,7 @@ function App() {
         <Route path="/favlist" element={<FavList/>}/>
         <Route path="/search-results" element={<SearchResults />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/aboutUs" element={<AboutPage/>}></Route>
       </Routes>
     </>
   );
