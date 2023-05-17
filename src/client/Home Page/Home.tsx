@@ -15,11 +15,11 @@ const touristAttractionImages = [
   { url: "images/5.jpg" },
 ];
 
-function Home() {
+function Home({ isLoggedIn }) {
   return (
     <div className="home">
       <div className="home-header">
-        <NavBar hasSearchBar={false} hasColor={false} isLoggedIn={false} />
+        <NavBar hasSearchBar={false} hasColor={false} isLoggedIn={isLoggedIn} />
       </div>
       <div className="home-slider">
         <SimpleImageSlider
@@ -38,7 +38,7 @@ function Home() {
         <p>Find Attractions Near Anywhere!</p>
       </div>
       <div className="home-search-bar">
-        <SearchBar />
+        <SearchBar isLoggedIn={isLoggedIn} />
       </div>
 
       <div className="home-info">
@@ -47,25 +47,36 @@ function Home() {
             id="home-info-info1-icon"
             src="icons/discover.png"
             alt="Discover"
-          ></img>
-          <p>Discover new sights and adventures</p>
+          />
+          <h1 className="home-info-head">Discover New Sights and Adventures</h1>
+          <p className="home-info-text">
+            Search through millions of popular locations around the world
+          </p>
         </div>
 
         <div id="home-info-info2">
           <img
             id="home-info-info2-icon"
-            src="icons/question.png"
-            alt="Question"
-          ></img>
-          <p>Ask any questions about an attraction</p>
+            src="icons/favorite.png"
+            alt="Favorite"
+          />
+          <h1 className="home-info-head">Save Your Favorite Locations</h1>
+          <p className="home-info-text">
+            Add your favorite destinations to a list and view it anytime
+          </p>
         </div>
-
-        <div id="home-info-info3">
-          <img id="home-info-info3-icon" src="icons/news.png" alt="News"></img>
-          <p>Find the latest news on an attraction</p>
+        <div className="home-info-info3">
+          <h1>Powered By</h1>
+          <img
+            id="home-info-info3-icon"
+            src="icons/google-place.png"
+            alt="Google Places API"
+          />
         </div>
       </div>
-      <Footer />
+      <div className="home-footer">
+        <Footer isLoggedIn={isLoggedIn} />
+      </div>
     </div>
   );
 }

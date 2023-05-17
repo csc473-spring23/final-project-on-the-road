@@ -1,25 +1,48 @@
-import "../footer/Footer.css";
+import "./Footer.css";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { IoIosConstruct } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
+  const handleClick1 = () => navigate("/aboutUs");
   return (
     <div className="footer">
       <div className="footer-about">
         <h1>About</h1>
-        <p>How it works</p>
-        <p>Development</p>
+        <p onClick={handleClick1}>
+          <FaMapMarkerAlt size="12px"></FaMapMarkerAlt> Ideation
+        </p>
+        <p>
+          <IoIosConstruct size="12px"></IoIosConstruct> Future Vision
+        </p>
       </div>
+
       <div className="footer-technology">
         <h1>Technology</h1>
-        <p>Google Nearby API</p>
-        <p>ChatGPT API</p>
-        <p>News API</p>
+        <ul>
+          <li>
+            <a href="https://developers.google.com/maps/">Google Maps API</a>
+          </li>
+          <li>
+            <a href="https://firebase.google.com/">FireBase</a>
+          </li>
+        </ul>
       </div>
 
       <div className="footer-team">
         <h1>Team</h1>
-        <p>Andy Zhen</p>
-        <p>Jiale (Jerry) Chen</p>
-        <p>Da Yuan Zhao</p>
+        <ul>
+          <li>
+            <a href="https://github.com/jchen056">Jiale (Jerry) Chen</a>
+          </li>
+          <li>
+            <a href="https://github.com/dyzhao1011">Da Yuan (Michael) Zhao</a>
+          </li>
+          <li>
+            <a href="https://github.com/Falselysium">Andy Zheng</a>
+          </li>
+        </ul>
       </div>
     </div>
   );

@@ -15,16 +15,13 @@ interface Props {
 
 function NavBar({ hasSearchBar, hasColor, isLoggedIn }: Props) {
   const navigate = useNavigate();
-  const handleClickHome = () => navigate("/");
+  const handleClickHome = () => {
+    isLoggedIn ? navigate("/loggedin") : navigate("/");
+  };
   const handleClickLogin = () => navigate("/login");
-  const handleClickSignup = () => navigate("/register");
   const handleClickFavoriteList = () => navigate("/favlist");
 
   if (isLoggedIn) {
-    const currentUser = curr_usr;
-    const displayName = currentUser?.displayName;
-    console.log(displayName);
-
     return (
       <div
         className="header"
@@ -33,7 +30,7 @@ function NavBar({ hasSearchBar, hasColor, isLoggedIn }: Props) {
         <div className="header-left">
           <img
             id="logo"
-            src="icons/logo.png"
+            src="http://localhost:3000/icons/logo.png"
             alt="Logo"
             onClick={handleClickHome}
           ></img>
@@ -44,11 +41,11 @@ function NavBar({ hasSearchBar, hasColor, isLoggedIn }: Props) {
         </div>
 
         <div className="header-middle">
-          {hasSearchBar ? <SearchBar /> : null}
+          {hasSearchBar ? <SearchBar isLoggedIn={isLoggedIn} /> : null}
         </div>
 
         <div className="header-right">
-          <Avatar name={displayName} />
+          <Avatar />
         </div>
       </div>
     );
@@ -72,16 +69,14 @@ function NavBar({ hasSearchBar, hasColor, isLoggedIn }: Props) {
         </div>
       </div>
 
-      <div className="header-middle">{hasSearchBar ? <SearchBar /> : null}</div>
+      <div className="header-middle">
+        {hasSearchBar ? <SearchBar isLoggedIn={isLoggedIn} /> : null}
+      </div>
 
       <div className="header-right">
         <div className="header-options">
           <div className="header-login" onClick={handleClickLogin}>
             <p>Log In</p>
-          </div>
-
-          <div className="header-signin" onClick={handleClickSignup}>
-            <p>Sign Up</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../Components/nav/NavBar";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getNearbyTouristAttractions } from "./TouristAttractions";
 import Footer from "../Components/footer/Footer";
@@ -8,6 +8,8 @@ import "./Search.css";
 import filterOnR from "./filterR";
 import { curr_usr } from "../config/firebase";
 import { addFavorite, favNumber } from "../config/firestore";
+
+const API_KEY = "AIzaSyB7tyYzcG6ULOQvCZ-A-tXWqr5MmYKrVBI";
 
 const iconArray = [
   "school",
@@ -19,7 +21,7 @@ const iconArray = [
   "museum",
 ];
 
-function SearchResults() {
+function SearchResults({ isLoggedIn }) {
   const [queryParam] = useSearchParams();
   const query = queryParam.get("q");
   let searchResults;
@@ -43,7 +45,10 @@ function SearchResults() {
   getNearbyTouristAttractions(query)
     .then((result) => {
       searchResults = result;
-
+      if (result.results.length == 0) {
+        alert("No results found. Please enter a valid query.");
+      }
+      console.log(searchResults);
       result.results.forEach((place) => {
         const placeID = place.place_id;
         const placeN = place.name;
@@ -63,26 +68,51 @@ function SearchResults() {
         x.setAttribute("Id", placeID);
         x.setAttribute("class", "place others");
 
-        const placeI = document.createElement("span");
-        placeI.setAttribute("class", "place_image");
-        const y = document.createElement("img");
-        y.src = place.icon;
-        for (var i = 0; i < iconArray.length; i++) {
-          if (place.icon.includes(iconArray[i])) {
-            x.setAttribute("class", "place " + iconArray[i]);
-          }
-        }
+        if (place.photos && place.photos.length > 0) {
+          const photo_reference = place.photos[0].photo_reference;
+          const photoURL = `http://localhost:3000/photo?maxheight=200&maxwidth=300&photoreference=${photo_reference}&key=${API_KEY}`;
+          axios.get(photoURL, { responseType: "blob" }).then((response) => {
+            const imageURL = URL.createObjectURL(response.data);
+            const placeI = document.createElement("span");
+            placeI.setAttribute("class", "place_image");
+            const y = document.createElement("img");
+            y.src = imageURL;
 
-        y.setAttribute("aria-hidden", "true");
-        y.setAttribute("class", "image");
-        y.setAttribute("alt", placeN);
-        placeI.append(y);
-        x.append(placeI);
+            for (var i = 0; i < iconArray.length; i++) {
+              if (place.icon.includes(iconArray[i])) {
+                x.setAttribute("class", "place " + iconArray[i]);
+              }
+            }
+
+            y.setAttribute("aria-hidden", "true");
+            y.setAttribute("class", "image");
+            y.setAttribute("alt", placeN);
+            placeI.append(y);
+            x.append(placeI);
+          });
+        } else {
+          const placeI = document.createElement("span");
+          placeI.setAttribute("class", "place_image");
+          const y = document.createElement("img");
+          y.src = "http://localhost:3000/images/imageHolder.png";
+
+          for (var i = 0; i < iconArray.length; i++) {
+            if (place.icon.includes(iconArray[i])) {
+              x.setAttribute("class", "place " + iconArray[i]);
+            }
+          }
+
+          y.setAttribute("aria-hidden", "true");
+          y.setAttribute("class", "image");
+          y.setAttribute("alt", placeN);
+          placeI.append(y);
+          x.append(placeI);
+        }
 
         const placeInfo = document.createElement("div");
         placeInfo.setAttribute("class", "place_info");
 
-        const placeName = document.createElement("span");
+        const placeName = document.createElement("h2");
         placeName.setAttribute("class", "place_name");
         const txtName = document.createTextNode(placeN);
         placeName.appendChild(txtName);
@@ -109,6 +139,7 @@ function SearchResults() {
             buttonA.style.backgroundColor = "lightblue";
             // buttonA.innerText="Remove from Favorite List";
             if (curr_usr) {
+              console.log(curr_usr);
               addFavorite(curr_usr.uid, placeA, placeN)
                 .then(() => favNumber(curr_usr.uid))
                 .then((num) => {
@@ -117,7 +148,7 @@ function SearchResults() {
                   //basketLenElement.innerHTML = num.toString();
                 });
             } else {
-              console.log("No user");
+              alert("Please sign in to use this feature.");
             }
           } else {
             buttonA.style.backgroundColor = "white";
@@ -132,14 +163,13 @@ function SearchResults() {
     .then(() => myslider())
     .then(() => {
       filterOnR();
-      console.log("finished");
     });
 
   return (
     <div>
-      <NavBar hasSearchBar={true} hasColor={true} isLoggedIn={false} />
+      <NavBar hasSearchBar={true} hasColor={true} isLoggedIn={isLoggedIn} />
       <div className="search-result">
-        <h2>What you have entered: {query}</h2>
+        <h2 id="search-result-user-input">Showing Results for: {query}</h2>
         <div className="search-result-main">
           <div className="search-result-filter">
             <span>
@@ -157,8 +187,8 @@ function SearchResults() {
           <button className="btn OTHERS" onClick={()=>filterObjects('others')}>Others</button> */}
 
             <div className="search-result-rangeslider">
-              <form>
-                <p>Rating range slider:</p>
+              <form id="slider">
+                <p>Rating</p>
                 <input
                   type="range"
                   min="0"
@@ -178,9 +208,9 @@ function SearchResults() {
 
           <div id="display"></div>
         </div>
-        <Footer />
         {/* {places.map((placei)=>(<Place id={placei.id} title={placei.title} addr={placei.addr} rating={placei.rating}/>))} */}
       </div>
+      <Footer />
     </div>
   );
 }

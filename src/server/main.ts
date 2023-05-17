@@ -19,6 +19,17 @@ app.use(
   })
 );
 
+app.use(
+  "/photo",
+  createProxyMiddleware({
+    target: GOOGLE_ENDPOINT,
+    changeOrigin: true,
+    logger: console,
+    pathRewrite: {
+      [`^/photo`]: "maps/api/place/photo",
+    },
+  })
+);
 
 app.get("/hello", (_, res) => {
   res.send("Hello Vite + React + TypeScript!");

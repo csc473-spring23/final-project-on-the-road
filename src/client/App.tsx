@@ -12,7 +12,7 @@ import { Register } from "./Register/Register";
 import FavList from "./Favorite List Page/FavList";
 import { logout } from "./config/firebase";
 import { log } from "console";
-import HomeLI from "./Home Page LI/Home LI";
+import AboutPage from "./About Page/About";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,12 +27,19 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/search-results" element={<SearchResults />}></Route>
+        <Route path="/" element={<Home isLoggedIn={false} />}></Route>
+        <Route
+          path="/search-results"
+          element={<SearchResults isLoggedIn={false} />}
+        ></Route>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/favlist" element={<FavList />} />
-        <Route path="/loggedin" element={<HomeLI />} />
+        <Route path="/loggedin" element={<Home isLoggedIn={true} />} />
+        <Route
+          path="/loggedin/search-results"
+          element={<SearchResults isLoggedIn={true} />}
+        />
+        <Route path="/aboutUs" element={<AboutPage />}></Route>
       </Routes>
     </>
   );

@@ -109,6 +109,7 @@ export const Register = (props) => {
               placeholder="youremail@gmail.com"
               id="email"
               name="email"
+              required
             />
 
             <label htmlFor="username">

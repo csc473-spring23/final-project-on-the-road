@@ -28,7 +28,7 @@ function FavList() {
 
   return (
     <div className="display_Fav_Page">
-      <NavBar hasSearchBar={true} hasColor={true} isLoggIn={true} />
+      <NavBar hasSearchBar={true} hasColor={true} isLoggedIn={true} />
 
       <div className="favlist_display" id="favlist_display"></div>
       <table className="table table-hover table-dark" id="favlist_display">

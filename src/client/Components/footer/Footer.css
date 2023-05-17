@@ -1,6 +1,12 @@
-.footer {
-    background-color: #003c53;
-    display: flex;
-    align-items: top;
-    justify-content:space-around;
+.footer{
+    background-color: rgba(0, 149, 218, 0.85);
+    display:flex;
+    justify-content: space-around;
+    bottom:0;
+
 }
+
+.footer>div>p{
+    cursor: pointer;
+}
+

@@ -8,7 +8,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { curr_usr, db } from "./firebase";
-
+import { signOut } from "firebase/auth";
+import { auth } from "./firebase";
 import { faV } from "@fortawesome/free-solid-svg-icons";
 import { Console } from "console";
 
@@ -24,6 +25,7 @@ export async function addUser(user: any, username: string) {
     email: user.email,
     favorites: {},
   });
+  signOut(auth);
 }
 
 //the number of places on the favorite list
@@ -80,7 +82,6 @@ export async function getFavorites(uuid: string) {
               .then((num) => {
                 const basketLenElement =
                   document.getElementById("basketLength");
-                basketLenElement.innerHTML = num.toString();
               });
             document.getElementById(key)?.remove();
           }

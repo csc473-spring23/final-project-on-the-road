@@ -7,7 +7,7 @@ export async function getNearbyTouristAttractions(query: string) {
   return axios
     .get(url)
     .then((response) => {
-      console.log(response.data);
+      console.log("hi");
       return response.data;
     })
     .catch((error) => {

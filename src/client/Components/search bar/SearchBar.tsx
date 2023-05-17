@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../search bar/SearchBar.css";
 import { BsSearch } from "react-icons/bs";
 
-function SearchBar() {
+function SearchBar({ isLoggedIn }) {
   const [query, setQuery] = useState("");
 
   const navigate = useNavigate();
@@ -12,7 +12,11 @@ function SearchBar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(query);
-    navigate(`/search-results?q=${query}`);
+    if (isLoggedIn == true) {
+      navigate(`/loggedin/search-results?q=${query}`);
+    } else {
+      navigate(`/search-results?q=${query}`);
+    }
   };
 
   const handleChange = (event) => {
