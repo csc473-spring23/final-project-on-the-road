@@ -53,6 +53,7 @@ export function signup(username:string, email: string, password: string) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("Registration Not Valid");
     });
 } 
 
@@ -69,6 +70,7 @@ export function login(email: string, password: string) {
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("Invalid login information");
     });
 }
 

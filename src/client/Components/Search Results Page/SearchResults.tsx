@@ -34,7 +34,9 @@ function SearchResults() {
   }}
   getNearbyTouristAttractions(query).then((result) => {
     searchResults = result;
-    
+    if (result.results.length==0){
+      alert("No results found");
+    }
     result.results.forEach((place) => {
       
       const placeID=place.place_id;
@@ -102,11 +104,12 @@ function SearchResults() {
               const basketLenElement=document.getElementById("basketLength");
               basketLenElement.innerHTML=num.toString();});
           }
+  
             
             
 
           else {
-            console.log("No user");
+            alert("Login to add favoriate.");
     }
           }
         else{

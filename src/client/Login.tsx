@@ -26,7 +26,7 @@ export const Login = (props) => {
     <div className="auth-form-container">
       <h2>Login</h2>
       <form className="login-form">
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">Email:</label>
         <input
           value={username}
           onChange={(e) => setUser(e.target.value)}

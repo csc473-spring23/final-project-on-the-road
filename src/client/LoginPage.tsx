@@ -8,14 +8,18 @@ function LoginPage() {
   const toggleForm = (formName) => {
     setCurrentForm(formName);
   };
+
   return (
+
     <div className="page">
-      {currentForm === "login" ? (
-        <Login onFormSwitch={toggleForm} />
-      ) : (
-        <Register onFormSwitch={toggleForm} />
-      )}
-    </div>
+    {currentForm === "login" ? (
+      <Login onFormSwitch={toggleForm} />
+    ) : (
+      <Register onFormSwitch={toggleForm} />
+    )}
+  </div>
+  
+    
   );
 }
 
