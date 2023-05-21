@@ -1,8 +1,8 @@
 import React from "react";
-import "../avatar/Avatar.css";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../config/firebase";
 import { curr_usr } from "../../config/firebase";
+import "../avatar/Avatar.css";
 
 function Avatar() {
   const navigate = useNavigate();

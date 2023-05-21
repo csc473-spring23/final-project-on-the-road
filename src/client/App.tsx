@@ -5,25 +5,16 @@
 import LoginPage from "./Login Page/LoginPage";
 import SearchResults from "./Search Results Page/SearchResults";
 import Home from "./Home Page/Home";
+import FavList from "./Favorite List Page/FavList";
+import AboutPage from "./About Page/About";
+import { logout } from "./config/firebase";
+import { log } from "console";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
 import { Register } from "./Register/Register";
-import FavList from "./Favorite List Page/FavList";
-import { logout } from "./config/firebase";
-import { log } from "console";
-import AboutPage from "./About Page/About";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  function handleLogin() {
-    setIsLoggedIn(true);
-  }
-
-  function handleLogout() {
-    logout();
-  }
   return (
     <>
       <Routes>

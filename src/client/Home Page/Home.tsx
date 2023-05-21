@@ -75,7 +75,7 @@ function Home({ isLoggedIn }) {
         </div>
       </div>
       <div className="home-footer">
-        <Footer isLoggedIn={isLoggedIn} />
+        <Footer />
       </div>
     </div>
   );

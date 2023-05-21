@@ -1,8 +1,8 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../search bar/SearchBar.css";
 import { BsSearch } from "react-icons/bs";
+import "../search bar/SearchBar.css";
 
 function SearchBar({ isLoggedIn }) {
   const [query, setQuery] = useState("");

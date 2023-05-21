@@ -1,11 +1,11 @@
 import React from "react";
+import SearchBar from "../search bar/SearchBar";
+import Avatar from "../avatar/Avatar";
 import { BsCardChecklist } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import SearchBar from "../search bar/SearchBar";
-import "../nav/NavBar.css";
 import { curr_usr, login, logout } from "../../config/firebase";
-import Avatar from "../avatar/Avatar";
+import "../nav/NavBar.css";
 
 interface Props {
   hasSearchBar: boolean;

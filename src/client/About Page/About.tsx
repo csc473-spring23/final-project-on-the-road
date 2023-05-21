@@ -3,7 +3,7 @@ import Footer from "../Components/footer/Footer";
 import { curr_usr } from "../config/firebase";
 import "./About.css";
 
-function AboutPage({ isLoggedIn }) {
+function AboutPage() {
   return (
     <div>
       <NavBar

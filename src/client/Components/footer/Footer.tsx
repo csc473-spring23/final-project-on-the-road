@@ -1,7 +1,7 @@
-import "./Footer.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosConstruct } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import "./Footer.css";
 
 function Footer() {
   const navigate = useNavigate();
@@ -12,9 +12,6 @@ function Footer() {
         <h1>About</h1>
         <p onClick={handleClick1}>
           <FaMapMarkerAlt size="12px"></FaMapMarkerAlt> Ideation
-        </p>
-        <p>
-          <IoIosConstruct size="12px"></IoIosConstruct> Future Vision
         </p>
       </div>
 

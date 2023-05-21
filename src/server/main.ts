@@ -2,7 +2,10 @@ import express from "express";
 import axios from "axios";
 import ViteExpress from "vite-express";
 
-const { createProxyMiddleware, responseInterceptor,} = require("http-proxy-middleware");
+const {
+  createProxyMiddleware,
+  responseInterceptor,
+} = require("http-proxy-middleware");
 const GOOGLE_ENDPOINT = "https://maps.googleapis.com/";
 
 const app = express();

@@ -124,20 +124,29 @@ export async function addFavorite(
   console.log("Add Favorite?");
   if (usr_data.exists()) {
     const fav_list = usr_data.data().favorites;
-    if (fav_list) {
-      console.log("Length of fav_list", Object.keys(fav_list).length);
+    let hasduplicate = 0;
+    for (const key in fav_list) {
+      if (location === fav_list[key].location) {
+        hasduplicate = 1;
+        break;
+      }
+    }
+    if (hasduplicate !== 1) {
+      if (fav_list) {
+        console.log("Length of fav_list", Object.keys(fav_list).length);
 
-      const max_key =
-        Object.keys(fav_list).length == 0
-          ? 0
-          : Object.keys(fav_list).reduce((a, b) => {
-              return Number(b) > Number(a) ? b : a;
-            });
-      fav_list[Number(max_key) + 1] = {
-        location: location,
-        name: name,
-      };
-      await updateDoc(q, { favorites: fav_list });
+        const max_key =
+          Object.keys(fav_list).length == 0
+            ? 0
+            : Object.keys(fav_list).reduce((a, b) => {
+                return Number(b) > Number(a) ? b : a;
+              });
+        fav_list[Number(max_key) + 1] = {
+          location: location,
+          name: name,
+        };
+        await updateDoc(q, { favorites: fav_list });
+      }
     }
   } else {
     console.log("No such document!");

@@ -5,13 +5,18 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: radial-gradient(circle at 10% 20%, rgba(0, 149, 218, 0.85) 9.9%, rgb(56, 80, 114) 100.3%);
+  background-image: radial-gradient(
+    circle at 10% 20%,
+    rgba(0, 149, 218, 0.85) 9.9%,
+    rgb(56, 80, 114) 100.3%
+  );
 }
 
-.auth-form-container, .login-form, .register-form {
+.auth-form-container,
+.login-form,
+.register-form {
   display: flex;
   flex-direction: column;
-
 }
 
 @media screen and (min-width: 600px) {
@@ -41,7 +46,6 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
-
 
 .link-btn {
   color: white;

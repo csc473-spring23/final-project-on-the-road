@@ -9,17 +9,8 @@ import filterOnR from "./filterR";
 import { curr_usr } from "../config/firebase";
 import { addFavorite, favNumber } from "../config/firestore";
 
-const API_KEY = "AIzaSyB7tyYzcG6ULOQvCZ-A-tXWqr5MmYKrVBI";
-
-const iconArray = [
-  "school",
-  "restaurant",
-  "bar",
-  "shopping",
-  "park",
-  "stadium",
-  "museum",
-];
+//REPLACE THE FOLLOWING WITH YOUR GOOGLE PLACES API KEY (DO NOT DELETE QUOTATIONS)
+const API_KEY = "YOUR API KEY";
 
 function SearchResults({ isLoggedIn }) {
   const [queryParam] = useSearchParams();
@@ -78,12 +69,6 @@ function SearchResults({ isLoggedIn }) {
             const y = document.createElement("img");
             y.src = imageURL;
 
-            for (var i = 0; i < iconArray.length; i++) {
-              if (place.icon.includes(iconArray[i])) {
-                x.setAttribute("class", "place " + iconArray[i]);
-              }
-            }
-
             y.setAttribute("aria-hidden", "true");
             y.setAttribute("class", "image");
             y.setAttribute("alt", placeN);
@@ -95,12 +80,6 @@ function SearchResults({ isLoggedIn }) {
           placeI.setAttribute("class", "place_image");
           const y = document.createElement("img");
           y.src = "http://localhost:3000/images/imageHolder.png";
-
-          for (var i = 0; i < iconArray.length; i++) {
-            if (place.icon.includes(iconArray[i])) {
-              x.setAttribute("class", "place " + iconArray[i]);
-            }
-          }
 
           y.setAttribute("aria-hidden", "true");
           y.setAttribute("class", "image");
@@ -135,24 +114,14 @@ function SearchResults({ isLoggedIn }) {
         const buttonA = document.createElement("button");
         buttonA.textContent = "Add to Favorite List";
         buttonA.addEventListener("click", () => {
-          if (buttonA.style.backgroundColor == "white") {
+          if (curr_usr) {
             buttonA.style.backgroundColor = "lightblue";
-            // buttonA.innerText="Remove from Favorite List";
-            if (curr_usr) {
-              console.log(curr_usr);
-              addFavorite(curr_usr.uid, placeA, placeN)
-                .then(() => favNumber(curr_usr.uid))
-                .then((num) => {
-                  const basketLenElement =
-                    document.getElementById("basketLength");
-                  //basketLenElement.innerHTML = num.toString();
-                });
-            } else {
-              alert("Please sign in to use this feature.");
-            }
+            console.log(curr_usr);
+            addFavorite(curr_usr.uid, placeA, placeN).then(() =>
+              favNumber(curr_usr.uid)
+            );
           } else {
-            buttonA.style.backgroundColor = "white";
-            // buttonA.innerText="Add to Favorite List";
+            alert("Please sign in to use this feature.");
           }
         });
         placeInfo.append(buttonA);
@@ -175,16 +144,6 @@ function SearchResults({ isLoggedIn }) {
             <span>
               <strong>Filter</strong>
             </span>
-            {/* <button className="btn PLACE" onClick={()=>{
-            filterObjects('place')} }>Show All</button> */}
-            {/* <button className="btn SHOPPING" onClick={()=>filterObjects('shopping')}>Shopping</button>
-          <button className="btn SCHOOL" onClick={()=>filterObjects('school')}>School</button>
-          <button className="btn RESTAURANT" onClick={()=>filterObjects('restaurant')}>Restaurant</button>
-          <button className="btn BAR" onClick={()=>filterObjects('bar')}>Bar</button>
-          <button className="btn MUSEUM" onClick={()=>filterObjects('museum')}>Museum</button>
-          <button className="btn STADIUM" onClick={()=>filterObjects('stadium')}>Stadium</button>
-          <button className="btn PARK" onClick={()=>filterObjects('park')}>Park</button>
-          <button className="btn OTHERS" onClick={()=>filterObjects('others')}>Others</button> */}
 
             <div className="search-result-rangeslider">
               <form id="slider">
@@ -208,7 +167,6 @@ function SearchResults({ isLoggedIn }) {
 
           <div id="display"></div>
         </div>
-        {/* {places.map((placei)=>(<Place id={placei.id} title={placei.title} addr={placei.addr} rating={placei.rating}/>))} */}
       </div>
       <Footer />
     </div>

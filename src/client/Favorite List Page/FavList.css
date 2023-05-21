@@ -1,24 +1,24 @@
-.filter_box{
+.filter_box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content:flex-start;
+  justify-content: flex-start;
   margin-bottom: 5px;
-  gap:5px;
+  gap: 5px;
 }
 
-.filter_box>button{
-  display:"normal";
+.filter_box > button {
+  display: "normal";
 }
 
-.table{
+.table {
   table-layout: auto;
-  overflow-x:auto;
+  overflow-x: auto;
   width: 100%;
   border-collapse: collapse;
-  /* border: 1px solid black; */
 }
-td,tr{
+td,
+tr {
   border: 1px solid black;
   padding: 8px;
   text-align: left;
@@ -27,9 +27,7 @@ th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-
 }
-/* tr:nth-child(even){
-  background-color: #f2f2f2;} */
 tr:hover {
-  background-color:rgba(0, 149, 218, 0.85);}
+  background-color: rgba(0, 149, 218, 0.85);
+}
